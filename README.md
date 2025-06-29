@@ -33,7 +33,7 @@ This solution uses **ConvNeXt-Small**, a modern convolutional neural network arc
 
 3. **Modeling with ConvNeXt**
    - Loaded pretrained **ConvNeXt-Small** from `timm`.
-   - Replaced final classification layer with a custom `nn.Linear` for 7 classes.
+   - Replaced final classification layer with a custom `nn.Linear` .
    - Used `torch.cuda.amp` for mixed precision training.
 
 4. **Training Strategy**
