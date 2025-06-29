@@ -20,29 +20,23 @@ This solution uses **ConvNeXt-Small**, a modern convolutional neural network arc
 
 ### 🔁 Step-by-Step Process
 
-1. **Data Preparation**
+ **Data Preparation**
    - Loaded image paths and labels from `train_labels.csv`.
    - Encoded class names to numeric IDs (`label2id`, `id2label`).
-   - Applied **Stratified K-Fold** split (5-fold) to maintain class balance.
 
-2. **Image Augmentation**
-   - Leveraged `Albumentations` for augmentations:
-     - Random crop, color jitter, brightness/contrast.
-     - Normalization and resizing to 224×224.
-   - Applied different transforms for training vs. validation.
 
-3. **Modeling with ConvNeXt**
+ **Modeling with ConvNeXt**
    - Loaded pretrained **ConvNeXt-Small** from `timm`.
    - Replaced final classification layer with a custom `nn.Linear` .
    - Used `torch.cuda.amp` for mixed precision training.
 
-4. **Training Strategy**
+**Training Strategy**
    - Optimizer: `AdamW`
    - Scheduler: `CosineAnnealingLR`
    - Loss: `CrossEntropyLoss` (optionally replaced by `FocalLoss`)
    - Trained on each fold and saved best model weights based on validation accuracy.
 
-5. **Inference and Submission**
+**Inference and Submission**
    - Ran predictions on test data using trained models from each fold.
    - Aggregated predictions using soft voting (average of probabilities).
    - Prepared a submission file in the required Kaggle format.
@@ -51,9 +45,7 @@ This solution uses **ConvNeXt-Small**, a modern convolutional neural network arc
 ## 🧪 Tools & Libraries
 
 - PyTorch & Torchvision
-- Albumentations (augmentations)
 - `timm` (ConvNeXt model)
-- Scikit-learn (KFold)
 - CUDA AMP (mixed precision)
 
 ## 🏆 Results
